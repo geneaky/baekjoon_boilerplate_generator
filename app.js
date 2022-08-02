@@ -83,6 +83,10 @@ const makeProblemAfterSetting = (project_path, package_name, language_type, prob
     configData.language_type = language_type;
     fs.writeFileSync("./config.json", JSON.stringify(configData));
 
+    fs.mkdirSync(project_path+"\\"+package_name+"\\bj"+problem_id,{recursive : true},(err) => {
+        console.log(err)
+    })
+
     if(language_type == "Java") {
         fs.writeFileSync(project_path+"\\"+package_name+"\\bj"+problem_id+"\\BJ"+problem_id+".java", getJavaTemplate(project_path,package_name,problem_id));
         fs.writeFileSync(project_path+"\\"+package_name+"\\bj"+problem_id+"\\input.txt", "");
@@ -92,6 +96,11 @@ const makeProblemAfterSetting = (project_path, package_name, language_type, prob
     }
 }
 const makeProblemClass = (problem_id) => {
+
+    fs.mkdirSync(configData.project_path+"\\"+configData.package_name+"\\bj"+problem_id,{recursive : true},(err) => {
+        console.log(err)
+    })
+
     if(configData.language_type == "Java") {
         fs.writeFileSync(configData.project_path+"\\"+configData.package_name+"\\bj"+problem_id+"\\BJ"+problem_id+".java", getJavaTemplate(configData.project_path,configData.package_name,problem_id));
         fs.writeFileSync(configData.project_path+"\\"+configData.package_name+"\\bj"+problem_id+"\\input.txt","");
@@ -102,7 +111,7 @@ const makeProblemClass = (problem_id) => {
 }
 
 const getJavaTemplate = (project_path, package_name, problem_id) => {
-    return `package ${package_name+".bj"+problem_id}
+    return `package ${package_name+".bj"+problem_id};
 
 import java.util.*;
 import java.io.*;
