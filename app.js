@@ -50,7 +50,7 @@ if(!configData.project_path && !configData.package_name) {
                 }
             ]).then((answer) => {
                 bar.tick();
-                makeProblemAfterSetting(answer.project_path,answer.package_name, problem_id);
+                makeProblemAfterSetting(answer.project_path,answer.package_name,answer.language_type, answer.problem_id);
                 if(bar.complete) {
                     console.log(chalk.yellow('\ncomplete\n'));
                 }
