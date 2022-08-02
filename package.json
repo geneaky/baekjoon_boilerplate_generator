@@ -2,7 +2,11 @@
   "name": "baekjoon_boilerplate_generator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/app.js",
+  "bin": {
+    "bj" : "bin/cli.js"
+  },
+  "preferGlobal": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,8 +15,8 @@
     "cli",
     "automation"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "kaktus418@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^9.4.0",
